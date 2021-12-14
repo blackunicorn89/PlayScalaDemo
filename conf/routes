@@ -6,7 +6,13 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
 
-GET     /Muumit                     controllers.Muumit.result()
++ nocsrf
+POST     /login                     controllers.login.validateLogin()
+
+
+GET     /muumimukit                 controllers.muumimukit.works()
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
