@@ -5,12 +5,12 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
+GET     /muumimukit                 controllers.muumimukit.works()
 
 + nocsrf
 POST     /login                     controllers.login.validateLogin()
+GET     /logout                     controllers.login.logout()
 
-
-GET     /muumimukit                 controllers.muumimukit.works()
 
 
 

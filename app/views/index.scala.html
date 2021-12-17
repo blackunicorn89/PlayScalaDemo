@@ -1,14 +1,17 @@
-@()
+@()(implicit request: RequestHeader, flash: Flash)
 
 @main("Welcome to play scala demo") {
   <h1>Welcome to play scala demo. Please login.</h1>
 
-  <form method="post" action="login">
+  <form method="post" action="@routes.login.validateLogin()">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username"><br><br>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password"><br><br>
     <input type="submit" value="Submit">
   </form>
+  <div id="errormessage">
+    <p>@flash.get("error")</p>
+  </div>
 
 }
