@@ -1,15 +1,36 @@
-@()(muumimukit: Seq[String] jotain: Seq[String])
+@(muumimukit: Seq muumimukit[, hinnat: Seq[String])
 
 
 
 @main("Muumimukit") {
         <h1>Here is the list of my favourites muumimukit</h1>
+                <ul>
+                        @for(muumimuki <- muumimukit) {
+                        <li>@muumimuki</li>
+        }
+                </ul>
 
-            <ul>
+                <ul>
+                        @for(hinta <- hinnat) {
+                        <li>@hinta</li>
+                        }
+                </ul>
+
+<table>
+        <tr>
                 @for(muumimuki <- muumimukit) {
-                    <li>@muumimuki</li>
+                        <td>@muumimuki</td>
                 }
-            </ul>
+        </tr>
+        <tr>
+                @for(hinta <- hinnat) {
+                <td>@hinta €</td>
+                }
+        </tr>
+
+
+</table>
+
 
         <a href="@routes.login.logout()">Logout</a>
 }
