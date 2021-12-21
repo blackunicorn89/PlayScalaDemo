@@ -10,28 +10,6 @@
         }
                 </ul>
 
-                <ul>
-                        @for(hinta <- hinnat) {
-                        <li>@hinta</li>
-                        }
-                </ul>
-
-<table>
-        <tr>
-                @for(muumimuki <- muumimukit) {
-                        <td>@muumimuki</td>
-                }
-        </tr>
-        <tr>
-                @for(hinta <- hinnat) {
-                <td>@hinta €</td>
-                }
-        </tr>
-
-
-</table>
-
-
-        <a href="@routes.login.logout()">Logout</a>
+                <a href="@routes.login.logout()">Logout</a>
 }
 

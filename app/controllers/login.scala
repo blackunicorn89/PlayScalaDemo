@@ -18,7 +18,7 @@ class login @Inject()(cc: ControllerComponents) extends AbstractController(cc){
       val username = args("username").head
       val password = args("password").head
       if (TaskListInMemory.validateUser(username, password)) {
-          Redirect(routes.muumimukit.works()).withSession("username" -> username)
+          Redirect(routes.muumit.works()).withSession("username" -> username)
       } else
         Redirect(routes.HomeController.index()).flashing("error" -> "Error. Invalid username or password. Please try againa ")
 
