@@ -8,22 +8,20 @@ import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents, R
 import java.sql.ResultSet
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
-
-
-case class mukit  (
-  nimi: String,
-  hinta: Int
-)
-
-object muki {
-  implicit val jsonFormat = Json.format[mukit]
-  implicit val joo = List[mukit("nimi")]
-  implicit val pa = List[mukit("hinta")]
+import scala.collection.mutable.ListBuffer
 
 
 
 
-}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -33,18 +31,43 @@ class muumit  @Inject() (val controllerComponents: ControllerComponents,db: Data
 
   implicit val ec: ExecutionContext = databaseExecutionContext
 
+
+
   def works: Action[AnyContent] = Action async { implicit request: Request[AnyContent] =>
+    var joo = ListBuffer[String]()
+    var hinta = ListBuffer[String]()
+
 
     for {
+
       resultDb <- doSomething()
 
-    } yield {
-
-      val resultJsonObj = Json.toJson(resultDb)
-      val muki = resultDb.ni
+    }
 
 
-      Ok(resultJsonObj)
+  yield {
+
+      for ((a, b ) <- resultDb){
+        joo += a
+        hinta += b.toString
+      }
+
+      val nimet = joo.toList
+      val hinnat = hinta.toList
+
+      Ok(views.html.muumimukit(nimet, hinnat))
+
+
+
+      //val result = resultDb.unapply(p)
+
+      //val resultJsonObj = Json.toJson(resultDb)
+      //val muki = resultDb.ni
+
+
+
+
+      //Ok(resultJsonObj)
 
     }
 
@@ -54,14 +77,14 @@ class muumit  @Inject() (val controllerComponents: ControllerComponents,db: Data
 
 
 
-    def doSomething()(implicit databaseExecutionContext: ExecutionContext): Future[List[(mukit)]] = {
+    def doSomething()(implicit databaseExecutionContext: ExecutionContext): Future[List[(String, Int)]] = {
     Future {
       db.withConnection { conn =>
         val resultSet:ResultSet = conn.prepareStatement("select nimi, hinta from muumimukit").executeQuery()
-        new Iterator[(mukit)] {
+        new Iterator[(String, Int)] {
           def hasNext: Boolean = resultSet.next()
-          def next(): (mukit) = {
-            mukit(resultSet.getString("nimi"),resultSet.getInt("hinta"))
+          def next(): (String, Int) = {
+            (resultSet.getString("nimi"),resultSet.getInt("hinta"))
 
           }
 
