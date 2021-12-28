@@ -1,8 +1,7 @@
 package controllers
 
-import akka.stream.impl.fusing.Map
+
 import play.api.db.Database
-import play.api.libs.json.{JsArray, JsBoolean, JsNull, JsNumber, JsObject, JsString, Json}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents, Request}
 
 import java.sql.ResultSet
