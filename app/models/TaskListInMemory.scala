@@ -4,7 +4,7 @@ import collection.mutable
 
 object TaskListInMemory {
 
-  private val users = mutable.Map[String, String]("Shit" -> "Fua")
+  val users = mutable.Map[String, String]("Shit" -> "Fua")
 
 
   def validateUser(username: String, password: String): Boolean = {

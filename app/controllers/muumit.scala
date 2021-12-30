@@ -32,6 +32,8 @@ class muumit  @Inject() (val controllerComponents: ControllerComponents,db: Data
 
 
 
+
+
   def works: Action[AnyContent] = Action async { implicit request: Request[AnyContent] =>
     var joo = ListBuffer[String]()
     var hinta = ListBuffer[String]()
@@ -54,7 +56,9 @@ class muumit  @Inject() (val controllerComponents: ControllerComponents,db: Data
       val nimet = joo.toList
       val hinnat = hinta.toList
 
+
       Ok(views.html.muumimukit(nimet, hinnat))
+
 
 
 

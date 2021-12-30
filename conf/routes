@@ -8,8 +8,8 @@ GET     /                           controllers.HomeController.index()
 GET     /muumit                     controllers.muumit.works()
 
 + nocsrf
-POST     /login                     controllers.login.validateLogin()
-GET     /logout                     controllers.login.logout()
+POST     /login                     controllers.HomeController.validateLogin()
+GET     /logout                     controllers.HomeController.logout()
 
 
 

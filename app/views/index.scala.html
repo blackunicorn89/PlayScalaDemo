@@ -3,7 +3,7 @@
 @main("Welcome to play scala demo") {
   <h1>Welcome to play scala demo. Please login.</h1>
 
-  <form method="post" action="@routes.login.validateLogin()">
+  <form method="post" action="@routes.HomeController.validateLogin()">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username"><br><br>
     <label for="password">Password:</label>
@@ -12,6 +12,7 @@
   </form>
   <div id="errormessage">
     <p>@flash.get("error")</p>
+    <p>@flash.get("dberror")</p>
   </div>
 
 }
