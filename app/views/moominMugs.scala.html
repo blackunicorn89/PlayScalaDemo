@@ -1,0 +1,27 @@
+@(moominmugs: Seq[String], prices: Seq[String])
+
+@main("Muumimukit") {
+        <!--After successful login this page shows the list of the moomin cups. The page takes two arguments:
+        the list of the cups and their prices-->
+        <h1>Here is the list of my favorites moomin mugs and their prices</h1>
+                <table>
+                        <tr>
+                                <th>Moomin mug & its price</th>
+                        </tr>
+                        <tr>
+                                <!--Renders the list of the mugs on a table.-->
+                                @for(mug <- moominmugs) {
+                                        <td>@mug</td>
+                                }
+                        </tr>
+                        <tr>
+                                <!--Renders the list of the mugs' prices on a table.-->
+                                @for(price <- prices) {
+                                        <td>@price €</td>
+                                }
+                        </tr>
+                </table>
+
+                <a href="@routes.login.logout()">Logout</a>
+}
+

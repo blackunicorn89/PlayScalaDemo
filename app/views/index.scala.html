@@ -3,16 +3,20 @@
 @main("Welcome to play scala demo") {
   <h1>Welcome to play scala demo. Please login.</h1>
 
-  <form method="post" action="@routes.HomeController.validateLogin()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username"><br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="submit" value="Submit">
-  </form>
-  <div id="errormessage">
-    <p>@flash.get("error")</p>
-    <p>@flash.get("dberror")</p>
-  </div>
+    <!--Home and login page-->
+    <!--The login form. Sends username and password as a post method to the controller that validates them-->
+    <form method="post" action="@routes.login.validateLogin()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <!--Shows error messages-->
+      <div id="errormessage">
+        <p>@flash.get("error")</p>
+        <p>@flash.get("dberror")</p>
+        <p>@flash.get("generror")</p>
+      </div>
 
 }

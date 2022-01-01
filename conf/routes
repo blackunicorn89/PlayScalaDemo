@@ -5,11 +5,11 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
-GET     /muumit                     controllers.muumit.works()
+GET     /moominMugs                 controllers.moominMugs.moominMugsToList()
 
 + nocsrf
-POST     /login                     controllers.HomeController.validateLogin()
-GET     /logout                     controllers.HomeController.logout()
+POST     /login                     controllers.login.validateLogin()
+GET     /logout                     controllers.login.logout()
 
 
 
